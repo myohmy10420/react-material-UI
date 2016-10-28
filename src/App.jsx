@@ -9,11 +9,11 @@ import { render } from 'react-dom';
  */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
+import { MyAppBar } from './Components/MyAppBar';
 
 const App = () => (
 		<MuiThemeProvider muiTheme={getMuiTheme()}>
-      		<AppBar title="App" />
+      		<MyAppBar title="App" />
     	</MuiThemeProvider>
 	);
 

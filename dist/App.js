@@ -30100,6 +30100,30 @@ module.exports = warning;
 },{"pBGvAp":185}],348:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+		value: true
+});
+exports.MyAppBar = undefined;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _AppBar = require('material-ui/AppBar');
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MyAppBar = exports.MyAppBar = function MyAppBar() {
+		return _react2.default.createElement(_AppBar2.default, {
+				title: "App" });
+};
+},{"material-ui/AppBar":149,"react":334,"react-dom":188}],349:[function(require,module,exports){
+'use strict';
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -30114,15 +30138,11 @@ var _getMuiTheme = require('material-ui/styles/getMuiTheme');
 
 var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
 
-var _AppBar = require('material-ui/AppBar');
-
-var _AppBar2 = _interopRequireDefault(_AppBar);
+var _MyAppBar = require('./Components/MyAppBar');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App() {
-  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: (0, _getMuiTheme2.default)() }, _react2.default.createElement(_AppBar2.default, { title: "App" }));
-};
+var muiTheme = (0, _getMuiTheme2.default)();
 
 /*
  * 引入 React Material UI 元件程式庫
@@ -30132,5 +30152,9 @@ var App = function App() {
  */
 
 
+var App = function App() {
+  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement(_MyAppBar.MyAppBar, { title: "App" }));
+};
+
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('content'));
-},{"material-ui/AppBar":149,"material-ui/styles/MuiThemeProvider":165,"material-ui/styles/getMuiTheme":168,"react":334,"react-dom":188}]},{},[348])
+},{"./Components/MyAppBar":348,"material-ui/styles/MuiThemeProvider":165,"material-ui/styles/getMuiTheme":168,"react":334,"react-dom":188}]},{},[349])
