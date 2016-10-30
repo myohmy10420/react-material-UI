@@ -45285,7 +45285,7 @@ var MyAppBar = exports.MyAppBar = function MyAppBar() {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.MyGridList = undefined;
 
@@ -45332,43 +45332,53 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var MyGridList = exports.MyGridList = function (_Component) {
-  _inherits(MyGridList, _Component);
+	_inherits(MyGridList, _Component);
 
-  function MyGridList(props, context) {
-    _classCallCheck(this, MyGridList);
+	function MyGridList(props, context) {
+		_classCallCheck(this, MyGridList);
 
-    var _this = _possibleConstructorReturn(this, (MyGridList.__proto__ || Object.getPrototypeOf(MyGridList)).call(this, props, context));
+		var _this = _possibleConstructorReturn(this, (MyGridList.__proto__ || Object.getPrototypeOf(MyGridList)).call(this, props, context));
 
-    _this.state = {
-      issues: []
-    };
-    return _this;
-  }
+		_this.state = {
+			issues: []
+		};
+		_this._handleClick = _this._handleClick.bind(_this);
+		return _this;
+	}
 
-  _createClass(MyGridList, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      _jquery2.default.get(this.props.source, function (result) {
-        this.setState({
-          issues: result
-        });
-      }.bind(this));
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(_GridList.GridList, null, this.state.issues.map(function (tile) {
-        return _react2.default.createElement(_GridList.GridTile, {
-          key: tile.id,
-          title: tile.title,
-          subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
-          actionIcon: _react2.default.createElement(_IconButton2.default, null, _react2.default.createElement(_starBorder2.default, { color: "white" }))
-        }, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
-      }));
-    }
-  }]);
+	_createClass(MyGridList, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			_jquery2.default.get(this.props.source, function (result) {
+				this.setState({
+					issues: result
+				});
+			}.bind(this));
+		}
+	}, {
+		key: '_handleClick',
+		value: function _handleClick(tile) {
+			this.props.handleClick(tile.title, tile.body);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-  return MyGridList;
+			return _react2.default.createElement(_GridList.GridList, null, this.state.issues.map(function (tile) {
+				var boundClick = _this2._handleClick.bind(_this2, tile);
+				return _react2.default.createElement(_GridList.GridTile, {
+					key: tile.id,
+					onClick: boundClick,
+					title: tile.title,
+					subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
+					actionIcon: _react2.default.createElement(_IconButton2.default, null, _react2.default.createElement(_starBorder2.default, { color: "white" }))
+				}, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
+			}));
+		}
+	}]);
+
+	return MyGridList;
 }(_react.Component);
 },{"jquery":56,"material-ui/GridList":160,"material-ui/IconButton":162,"material-ui/Subheader":177,"material-ui/svg-icons/toggle/star-border":202,"react":370,"react-dom":217}],386:[function(require,module,exports){
 'use strict';
@@ -45467,8 +45477,13 @@ var muiTheme = (0, _getMuiTheme2.default)();
  */
 
 
+var handleClick = function handleClick(title, body) {
+	console.log("Title", title);
+};
+
 var App = function App() {
 	return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, { title: "App" }), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
+		handleClick: handleClick,
 		source: "https://api.github.com/repos/myohmy10420/react-material-UI/issues",
 		cellHeight: 200 })));
 };

@@ -15,12 +15,17 @@ import { MyPaper } from './Components/MyPaper';
 
 const muiTheme = getMuiTheme();
 
+const handleClick = (title, body) => {
+	console.log("Title", title);
+};
+
 const App = () => (
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<div>
 	      		<MyAppBar title="App" />
 	      		<MyPaper />
 	      		<MyGridList 
+	      			handleClick={handleClick}
 	      			source="https://api.github.com/repos/myohmy10420/react-material-UI/issues"
 	      			cellHeight={200} 
 	      		/>
