@@ -8,7 +8,6 @@ import { render } from 'react-dom';
  * 引入 React Material UI 元件程式庫
  */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { MyAppBar } from './Components/MyAppBar';
 import { MyGridList } from './Components/MyGridList';
@@ -19,7 +18,10 @@ const App = () => (
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<div>
 	      		<MyAppBar title="App" />
-	      		<MyGridList />
+	      		<MyGridList 
+	      			source="https://api.github.com/repos/myohmy10420/react-material-UI/issues"
+	      			cellHeight={200} 
+	      		/>
 			</div>
     	</MuiThemeProvider>
 	);
