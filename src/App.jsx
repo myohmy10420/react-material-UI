@@ -11,6 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { MyAppBar } from './Components/MyAppBar';
 import { MyGridList } from './Components/MyGridList';
+import { MyPaper } from './Components/MyPaper';
 
 const muiTheme = getMuiTheme();
 
@@ -18,6 +19,7 @@ const App = () => (
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<div>
 	      		<MyAppBar title="App" />
+	      		<MyPaper />
 	      		<MyGridList 
 	      			source="https://api.github.com/repos/myohmy10420/react-material-UI/issues"
 	      			cellHeight={200} 
