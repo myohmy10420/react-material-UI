@@ -45363,7 +45363,7 @@ var MyGridList = exports.MyGridList = function (_Component) {
           title: tile.title,
           subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
           actionIcon: _react2.default.createElement(_IconButton2.default, null, _react2.default.createElement(_starBorder2.default, { color: "white" }))
-        }, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.number }));
+        }, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
       }));
     }
   }]);
