@@ -45423,6 +45423,7 @@ var MyPaper = exports.MyPaper = function (_Component) {
 		_this.state = {
 			body: ""
 		};
+		_this.converter = new showdown.Converter();
 		return _this;
 	}
 
@@ -45430,17 +45431,19 @@ var MyPaper = exports.MyPaper = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			(0, _jquery2.default)(window).bind("postUpdate", function (event, title, body) {
+				var html = this.converter.makeHtml(body);
+
 				this.setState({
-					body: body
+					body: html
 				});
 			}.bind(this));
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_Paper2.default, {
+			return _react2.default.createElement(_Paper2.default, { id: "test",
 				zDepth: 1
-			}, this.state.body);
+			}, _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.body } }));
 		}
 	}]);
 

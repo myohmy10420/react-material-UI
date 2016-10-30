@@ -12,12 +12,15 @@ export class MyPaper extends Component {
 		this.state = {
 			body:""
 		};
+		this.converter = new showdown.Converter();
 	}
 
 	componentDidMount() {
 		$(window).bind("postUpdate", function(event, title, body) {
+			var html = this.converter.makeHtml(body);
+
 			this.setState({
-				body: body
+				body: html
 			});
 		}.bind(this));
 	}
@@ -27,7 +30,7 @@ export class MyPaper extends Component {
 			<Paper
 				zDepth={1}
 			>
-				{this.state.body}
+				<div dangerouslySetInnerHTML={{__html: this.state.body}} />
 			</Paper>
 		);
 	}
