@@ -13,10 +13,12 @@ import { MyAppBar } from './Components/MyAppBar';
 import { MyGridList } from './Components/MyGridList';
 import { MyPaper } from './Components/MyPaper';
 
+import $ from 'jquery';
+
 const muiTheme = getMuiTheme();
 
 const handleClick = (title, body) => {
-	console.log("Title", title);
+	$(window).trigger("postUpdate", [title, body]);
 };
 
 const App = () => (

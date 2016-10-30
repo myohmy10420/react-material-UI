@@ -45428,13 +45428,19 @@ var MyPaper = exports.MyPaper = function (_Component) {
 
 	_createClass(MyPaper, [{
 		key: 'componentDidMount',
-		value: function componentDidMount() {}
+		value: function componentDidMount() {
+			(0, _jquery2.default)(window).bind("postUpdate", function (event, title, body) {
+				this.setState({
+					body: body
+				});
+			}.bind(this));
+		}
 	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(_Paper2.default, {
 				zDepth: 1
-			}, this.state.body, "Hellp Paper");
+			}, this.state.body);
 		}
 	}]);
 
@@ -45465,9 +45471,11 @@ var _MyGridList = require('./Components/MyGridList');
 
 var _MyPaper = require('./Components/MyPaper');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _jquery = require('jquery');
 
-var muiTheme = (0, _getMuiTheme2.default)();
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * 引入 React Material UI 元件程式庫
@@ -45475,10 +45483,10 @@ var muiTheme = (0, _getMuiTheme2.default)();
 /*
  * 引入 React 程式庫
  */
-
+var muiTheme = (0, _getMuiTheme2.default)();
 
 var handleClick = function handleClick(title, body) {
-	console.log("Title", title);
+	(0, _jquery2.default)(window).trigger("postUpdate", [title, body]);
 };
 
 var App = function App() {
@@ -45489,4 +45497,4 @@ var App = function App() {
 };
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('content'));
-},{"./Components/MyAppBar":384,"./Components/MyGridList":385,"./Components/MyPaper":386,"material-ui/styles/MuiThemeProvider":189,"material-ui/styles/getMuiTheme":192,"react":370,"react-dom":217}]},{},[387])
+},{"./Components/MyAppBar":384,"./Components/MyGridList":385,"./Components/MyPaper":386,"jquery":56,"material-ui/styles/MuiThemeProvider":189,"material-ui/styles/getMuiTheme":192,"react":370,"react-dom":217}]},{},[387])
