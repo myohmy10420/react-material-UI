@@ -45350,9 +45350,6 @@ var MyGridList = exports.MyGridList = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			_jquery2.default.get(this.props.source, function (result) {
-
-				console.log(result['items']);
-
 				this.setState({
 					issues: result['items']
 				});
