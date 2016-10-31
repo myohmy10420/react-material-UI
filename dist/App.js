@@ -45279,7 +45279,7 @@ var MyAppBar = exports.MyAppBar = function MyAppBar() {
 			iconButtonElement: _react2.default.createElement(_IconButton2.default, null, _react2.default.createElement(_moreVert2.default, null))
 
 		}, _react2.default.createElement(_MenuItem2.default, { primaryText: "Help" })),
-		title: "App" });
+		title: "Kurt's blog by React" });
 };
 },{"material-ui/AppBar":155,"material-ui/IconButton":162,"material-ui/IconMenu":164,"material-ui/MenuItem":171,"material-ui/svg-icons/navigation/more-vert":201,"react":370,"react-dom":217,"react-tap-event-plugin":224}],385:[function(require,module,exports){
 'use strict';
@@ -45350,15 +45350,18 @@ var MyGridList = exports.MyGridList = function (_Component) {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			_jquery2.default.get(this.props.source, function (result) {
+
+				console.log(result['items']);
+
 				this.setState({
-					issues: result
+					issues: result['items']
 				});
 			}.bind(this));
 		}
 	}, {
 		key: '_handleClick',
 		value: function _handleClick(tile) {
-			this.props.handleClick(tile.title, tile.body);
+			this.props.handleClick(tile.title, tile.description);
 		}
 	}, {
 		key: 'render',
@@ -45371,9 +45374,9 @@ var MyGridList = exports.MyGridList = function (_Component) {
 					key: tile.id,
 					onClick: boundClick,
 					title: tile.title,
-					subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
+					subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.author)),
 					actionIcon: _react2.default.createElement(_IconButton2.default, null, _react2.default.createElement(_starBorder2.default, { color: "white" }))
-				}, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
+				}, _react2.default.createElement("img", { src: 'http://i.imgur.com/XVV1cVZ.jpg' }));
 			}));
 		}
 	}]);
@@ -45441,7 +45444,7 @@ var MyPaper = exports.MyPaper = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_Paper2.default, { id: "test",
+			return _react2.default.createElement(_Paper2.default, {
 				zDepth: 1
 			}, _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.body } }));
 		}
@@ -45493,10 +45496,10 @@ var handleClick = function handleClick(title, body) {
 };
 
 var App = function App() {
-	return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, { title: "App" }), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
+	return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
 		handleClick: handleClick,
-		source: "https://api.github.com/repos/myohmy10420/react-material-UI/issues",
-		cellHeight: 200 })));
+		source: "http://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fmyohmy10420-blog.logdown.com%2Fposts.rss",
+		cellHeight: 600 })));
 };
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('content'));

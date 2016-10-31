@@ -21,5 +21,5 @@ export const MyAppBar = () => (
 				>
 				<MenuItem primaryText="Help" />
 				</IconMenu>}
-			title="App" />
+			title="Kurt's blog by React" />
 	);

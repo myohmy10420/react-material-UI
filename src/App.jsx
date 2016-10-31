@@ -24,12 +24,12 @@ const handleClick = (title, body) => {
 const App = () => (
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<div>
-	      		<MyAppBar title="App" />
+	      		<MyAppBar />
 	      		<MyPaper />
 	      		<MyGridList 
 	      			handleClick={handleClick}
-	      			source="https://api.github.com/repos/myohmy10420/react-material-UI/issues"
-	      			cellHeight={200} 
+	      			source="http://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fmyohmy10420-blog.logdown.com%2Fposts.rss"
+	      			cellHeight={600} 
 	      		/>
 			</div>
     	</MuiThemeProvider>
